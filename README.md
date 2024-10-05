@@ -1,21 +1,54 @@
 # Accessibility-Testing
-## get started
+## Set Up Environment
 the script depends on the packages:
-- google-sheet==2.2.2
-
-you also need to install `some-software` before running it.
+- Install Python3 & pip
+- The commands to install through terminal
+```bash
+python3 -m venv venv
+```
+```bash
+source venv/bin/activate
+```
+you also need to install libraries `gspread` before running the script.
 you can install by these commands:
 ```bash
-apt install python3-dev
+pip install gspread oauth2client
+```
+you also need to install a tool `lighthouse` before running the script.
+you can install by these commands:
+```bash
+brew install node
+```
+```bash
+npm install -g lighthouse
+```
+```bash
+lighthouse 'url'
 ```
 
-## setup
-in `upload2googlesheets.py`, there are 3 config you need to set before running the script
+
+## Setup
+- Go to Google Cloud Console
+- Enable the Google Sheets API (default: it's always on)
+- Download the credentials.json file from IAM Page
+- In `upload2googlesheets.py`, there are 3 config you need to set before running the script
 - `CREDENTIALS_FILE`: The path to the json file downloaded from Google Cloud Console (IAM page)
 - `SHEET_ID`: copy it from the url to the Google sheet you are writing to
-- `CSV_PATH`: the path to the output of `another_script.py`
+- `CSV_PATH`: the path to the output of `convert2CSV.py`
 
-### there is something complex
-1. the steps...
-2. ssteps...
+### Run the Script
+```bash
+python3 upload2googlesheets.py
+```
+
+## Automate the Script
+```bash
+crontab -e
+```
+```bash
+0 2 * * * /path/to/venv/bin/python3 /path/to/upload2googlesheets.py
+```
+### Verify
+- Open the Google Sheet to check the uploaded data.
+
 
