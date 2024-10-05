@@ -48,6 +48,8 @@ crontab -e
 ```bash
 0 2 * * * /path/to/venv/bin/python3 /path/to/upload2googlesheets.py
 ```
+The test has already been automated to run by 2 AM every day
+
 ### Verify
 - Open the Google Sheet to check the uploaded data.
 
