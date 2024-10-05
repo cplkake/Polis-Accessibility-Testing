@@ -26,6 +26,10 @@ npm install -g lighthouse
 lighthouse 'url'
 ```
 
+## Link to the Spreadsheet
+- Make sure to log in througyh the service account
+- The Spreadsheet has 3 sheets for the test results of the priority pages (Homepgage, Participation Page, and Report Page)
+- https://docs.google.com/spreadsheets/d/1JXuXckkMHYdU8BmTRpWBOVHUKv5YQC5Wg6dBjtkJmLY/edit?usp=sharing
 
 ## Setup
 - Go to Google Cloud Console
