@@ -1,5 +1,8 @@
 import json
 import csv
+from dotenv import load_dotenv
+import os
+
 
 def lighthouse_json_to_csv(json_path, csv_path):
     # Load the Lighthouse JSON data
@@ -41,6 +44,11 @@ def lighthouse_json_to_csv(json_path, csv_path):
         writer.writeheader()
         writer.writerows(rows)
 
-# Example usage
-lighthouse_json_to_csv('Insert path to the accessibilty report in json format', 'Inser path of where you want the CSV output of the script')
+# Load environment variables from .env file
+load_dotenv()
 
+# Environment variables
+json_path = os.getenv('JSON_PATH')
+csv_path = os.getenv('CSV_PATH')
+
+lighthouse_json_to_csv(json_path, csv_path)

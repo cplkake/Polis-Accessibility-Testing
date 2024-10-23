@@ -3,14 +3,10 @@ from oauth2client.service_account import ServiceAccountCredentials
 import csv
 import time
 import traceback
+from dotenv import load_dotenv
+import os
 
-# Configuration
-CREDENTIALS_FILE = '< Put your path to the json file >'
-SHEET_ID = ''
-CSV_PATH = 'Put your path to the csv file'
-
-
-def upload_csv_to_google_sheet(csv_path, sheet_id, credentials_file):
+def upload_csv_to_google_sheet(csv_path, spreadsheet_id, credentials_file):
     try:
         # Set up the credentials and authorize the client
         scope = ["https://spreadsheets.google.com/feeds", 'https://www.googleapis.com/auth/spreadsheets',
@@ -42,5 +38,13 @@ def upload_csv_to_google_sheet(csv_path, sheet_id, credentials_file):
         print(f"An error occurred: {e}")
         traceback.print_exc()
 
+# Load environment variables from .env file
+load_dotenv()
+
+# Environment variables
+csv_path = os.getenv('CSV_PATH')
+spreadsheet_id = os.getenv('SPREADSHEET_ID')
+credentials_file = os.getenv('CREDENTIALS_FILE')
+
 # Usage
-upload_csv_to_google_sheet(CSV_PATH, SHEET_ID, CREDENTIALS_FILE)
+upload_csv_to_google_sheet(csv_path, spreadsheet_id, credentials_file)
