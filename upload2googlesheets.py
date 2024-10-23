@@ -15,8 +15,8 @@ def upload_csv_to_google_sheet(csv_path, spreadsheet_id, credentials_file):
         client = gspread.authorize(creds)
 
         # Open the Google Sheet using the Sheet ID
-        print(f"Opening the Google Sheet with ID: {sheet_id}")
-        sheet = client.open_by_key(sheet_id).sheet1
+        print(f"Opening the Google Sheet with ID: {spreadsheet_id}")
+        sheet = client.open_by_key(spreadsheet_id).worksheet("Sheet1")
 
         # Read the CSV file
         print(f"Reading the CSV file: {csv_path}")
@@ -24,13 +24,13 @@ def upload_csv_to_google_sheet(csv_path, spreadsheet_id, credentials_file):
             csv_reader = csv.reader(file)
             data = list(csv_reader)
 
-        # Clear existing content in the sheet
-        print("Clearing the sheet...")
-        sheet.clear()
+        # # Clear existing content in the sheet
+        # print("Clearing the sheet...")
+        # sheet.clear()
 
         # Upload data to the Google Sheet using append_rows (batch insertion)
         print("Uploading data to the Google Sheet...")
-        sheet.append_rows(data, value_input_option='RAW')
+        sheet.append_rows(data, value_input_option='USER_ENTERED')
         
         print("Data uploaded successfully to Google Sheet.")
 
